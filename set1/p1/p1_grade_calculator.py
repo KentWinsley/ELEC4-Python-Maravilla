@@ -34,6 +34,33 @@ def get_lowest(grades):
 def get_status(grades):
     return "PASSED" if get_average(grades) >= 75 else "FAILED"
 
+def show_results(grades):
+    print("\n--- GRADE REPORT ---")
+    print(f"Average: {get_average(grades):.2f}")
+    print(f"Highest: {get_highest(grades):.2f}")
+    print(f"Lowest:  {get_lowest(grades):.2f}")
+    print(f"Status:  {get_status(grades)}")
+
+def main():
+    grades = []
+    while True:
+        print("\n1. Enter grades\n2. View results\n3. Exit")
+        choice = input("Choose: ").strip()
+        if choice == "1":
+            grades = enter_grades()
+        elif choice == "2":
+            if grades:
+                show_results(grades)
+            else:
+                print("Enter grades first.")
+        elif choice == "3":
+            print("Goodbye!")
+            break
+        else:
+            print("Invalid choice.")
+
+if __name__ == "__main__":
+    main()
 
 # In this program, grades inside main() is a local variable because it is created
 # inside that function. A local variable can only be used in its function unless
