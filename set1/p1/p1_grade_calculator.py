@@ -3,9 +3,11 @@
 # Activity: P1 – Student Grade Calculator
 # Date: November 19, 2026
 
-
+# Calculates the average, highest, and lowest grades of a student.
 def enter_grades():
     grades = []
+
+    # Prompt the user to enter grades until they type "done"
     while True:
         value = input("Enter a grade (or type done): ").strip()
         if value.lower() == "done":
@@ -13,6 +15,8 @@ def enter_grades():
                 return grades
             print("Please enter at least one grade.")
             continue
+        
+        # Validate the input to ensure it's a number between 0 and 100
         try:
             grade = float(value)
             if 0 <= grade <= 100:
@@ -31,9 +35,11 @@ def get_highest(grades):
 def get_lowest(grades):
     return min(grades)
 
+# Determine if the student passed or failed based on the average grade
 def get_status(grades):
     return "PASSED" if get_average(grades) >= 75 else "FAILED"
 
+# Display the results of the grade calculations
 def show_results(grades):
     print("\n--- GRADE REPORT ---")
     print(f"Average: {get_average(grades):.2f}")
@@ -41,6 +47,7 @@ def show_results(grades):
     print(f"Lowest:  {get_lowest(grades):.2f}")
     print(f"Status:  {get_status(grades)}")
 
+# Display the main menu and handle user choices
 def main():
     grades = []
     while True:
